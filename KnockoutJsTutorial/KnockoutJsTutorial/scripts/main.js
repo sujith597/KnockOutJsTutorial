@@ -14,7 +14,7 @@
         this.capMe(currentName.toUpperCase());
     };
          this.studentsList = ko.observableArray([{ "Fname": "Student1", "LastName": "LName1" },
-    { "Fname": "Student2", "LastName": "LName2" },
+    { "Fname": "Student2", "LastName": "LName2",  },
     { "Fname": "Student3", "LastName": "LName3" },
     { "Fname": "Student4", "LastName": "LName4" }]);
        
@@ -28,6 +28,10 @@
        this.addNewStudent = function () {
            this.studentsListForAdd.push({"Fname" : this.addFName(), "LastName" : this.addLName()});
        };
+       this.removeStudent = function (student) {
+           this.studentsListForAdd.remove(student);
+       };
 };
+
 
 ko.applyBindings(new applyBinding());
