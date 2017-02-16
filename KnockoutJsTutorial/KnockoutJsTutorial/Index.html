@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Knockout JS Application</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron"><h1>Knockout JS</h1> <br /><p> My first knockout js application</p></div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>  Introduction of knockout JS</h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="well">
+                            <h2><span class="label label-info"> Data binding</span></h2>
+                            <p> By adding data-bind : "text : firstName" we can bind data in HTML.</p>
+                            <p> In Java script we need to do applybindings by using <br /><strong> ko.applybindings(new method name)</strong></p>
+                            <hr />
+                            <p>First name: <strong data-bind="text: firstName"></strong></p>
+                            <p>Last name: <strong data-bind="text: lastName"></strong></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="well">
+                            <h2><span class="label label-info"> Two Way data binding</span></h2>
+                            <p> By adding <strong> data-bind : "value : firstName" </strong> we can bind input controller in HTML to knockout</p>
+                            <p> In Java script we need to do applybindings by using <br /><strong> ko.applybindings(new method name)</strong></p>
+                            <p> we use <strong>ko.observable</strong> for getting two way binding. <br />like <strong>ko.observable("Sandeep")</strong></p>
+                            <hr />
+                            <p>First name: <strong data-bind="text: firstName2"></strong></p>
+                            <p>Last name: <strong data-bind="text: lastName2"></strong></p>
+
+                            <hr />
+                            <input type="text" data-bind="value:firstName2" />
+                            <input type="Text" data-bind="value:lastName2" />
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="well">
+                            <h2><span class="label label-info"> Computed values </span></h2>
+                            <p> we use ko.computed for computing values and computed values are observables they change when chagne happend</p>
+                            <hr />
+                            <p> function looks like below</p>
+                            <br />   this.fullName3 = ko.computed(function () { <br />
+                            return this.firstName3() + " " + this.lastName3(); <br />
+                            }, this);<br />
+                            <hr />
+                            <input type="text" data-bind="value:firstName3" />
+                            <input type="Text" data-bind="value:lastName3" />
+                            <p> Full name : <strong data-bind="text: fullName3"></strong></p>
+                            <input type="text" data-bind="value: fullName3" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="well">
+                            <h2><span class="label label-info"> Functions in ViewModel</span></h2>
+                            <p> we can add functions in view model and we can call them by <strong>data-bind="click: CapMefunction"</strong></p>
+                            <hr />
+                            <p> click on below button to captilaze following name : <strong data-bind="text: capMe"></strong></p>
+                            <p style="text-align:center">
+                                <button type="button" data-bind="click:CapMefunction" class="btn-default"> Make text Cap </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>  Introduction of knockout JS</h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="well">
+                            <h2><span class="label label-info"> Lists and Collection</span></h2>
+                            <p> If we have a list of data, for interating through data we have <strong>data-bind : "foreach : students"</strong></p>
+                            <p> and we can access data in each variable with respective name</p>
+                            <p> and For array in javascript we use <strong> ko.observableArray</strong></p>
+                            <hr />
+                            <p> Lets say we have student list as follows</p>
+                            <table class="table table-responsive table-hover table-striped">
+                                <thead><tr> <th> First Name</th> <th> Last Name</th></tr></thead>
+                                <tbody data-bind="foreach : studentsList">
+                                    <tr>
+                                        <td data-bind="text:Fname"> </td>
+                                        <td data-bind="text:LastName"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="well">
+                            <h2><span class="label label-info">Appending new element into List</span></h2>
+                            <p> we are populated table with existing data</p>
+                            <table class="table table-responsive table-hover table-striped">
+                                <thead><tr> <th> First Name</th> <th> Last Name</th></tr></thead>
+                                <tbody data-bind="foreach : studentsListForAdd">
+                                    <tr>
+                                        <td data-bind="text:Fname"> </td>
+                                        <td data-bind="text:LastName"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                                if we want to add new row we can simply take data and add to studentslist object. as it is already observablearray it will automatically
+                                get updated data in to table
+                            </p>
+                            <hr />
+                            <div style="text-align:center">
+                                <input type="text" data-bind="value: addFName" />
+                                <input type="text" data-bind="value : addLName" />
+
+                                <button class="btn btn-success" data-bind="click: addNewStudent"> Add Student</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

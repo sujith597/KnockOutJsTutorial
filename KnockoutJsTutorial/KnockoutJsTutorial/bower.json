@@ -1,0 +1,17 @@
+{
+  "name": "knockjs",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "sujith kumar"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/sujith597/KnockOutJsTutorial",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
